@@ -3,11 +3,13 @@ from price_calc import price_calc
 from sklearn.linear_model import LinearRegression
 import pickle
 
+# Importation de la variable 'model' présente dans data_processing.ipynb
 with open('modele.pkl', 'rb') as f:
     model = pickle.load(f)
 
 st.title("Estimation du prix d'une voiture")
 
+# Création du formulaire à compléter pour l'estimation
 marque = st.selectbox(
     'Marque',
     ('Alfa-Romeo', 'Audi', 'BMW', 'Chevrolet', 'Dodge', 'Honda', 'Isuzu', 'Jaguar', 'Mazda', 'Buick', 'Mercury', 'Mitsubishi', 'Nissan', 'Peugeot', 'Plymouth', 'Porsche', 'Renault', 'Saab', 'Subaru', 'Toyota', 'Volkswagen', 'Volvo'))
@@ -51,7 +53,8 @@ consommation_ville = st.number_input('Consommation en ville (l/100)')
 consommation_autoroute = st.number_input('Consommation sur autoroute (l/100)')
 
 
-
+# Changement des variables pour les rendre numériques et qu'elles correspondent à celles définies lors
+# du nettoyage des données
 if st.button("Estimer le prix"):
     marque_dict = {
         'Alfa-Romeo' : 0,
